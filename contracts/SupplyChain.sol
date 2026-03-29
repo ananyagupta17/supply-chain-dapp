@@ -100,7 +100,7 @@ contract SupplyChain {
         productExists(_id)
         onlyOwner(_id)
     {
-        require(uint(_newStage) > uint(products[_id].stage), "Can only move forward in stages");
+        require(uint(_newStage) == uint(products[_id].stage) + 1, "Can only move one stage at a time");
 
         products[_id].stage = _newStage;
         products[_id].timestamp = block.timestamp;
